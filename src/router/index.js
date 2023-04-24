@@ -9,11 +9,11 @@ const router = createRouter({
             component: AppLayout,
             children: [
                 {
-                    path: '/',
-                    name: 'dashboard',
-                    component: () => import('@/views/Dashboard.vue')
-                },
-                {
+                path: '/',
+                name: 'dashboard',
+                component: () => import('@/views/Dashboard.vue')
+        },
+        {
                     path: '/uikit/formlayout',
                     name: 'formlayout',
                     component: () => import('@/views/uikit/FormLayout.vue')
@@ -140,7 +140,16 @@ const router = createRouter({
                     path: '/documentation',
                     name: 'documentation',
                     component: () => import('@/views/utilities/Documentation.vue')
-                },
+                }
+                // start product
+
+                // end product
+            ]
+        },
+        {
+            path: '/demo',
+            component: AppLayout,
+            children: [
                 // start product
                 {
                     path: '/demo/todolist',
@@ -161,10 +170,9 @@ const router = createRouter({
                     path: '/demo/todolist-components-with-piana-2',
                     name: 'todolist-components-with-piana-2',
                     component: () => import('@/views/pages/TodoListComponentsWithPiana2.vue')
-                },
-        
-                // end product
+                }
             ]
+            // end product]
         },
         {
             path: '/landing',
@@ -190,7 +198,7 @@ const router = createRouter({
             path: '/:pathMatch(.*)*',
             name: 'notfound',
             component: () => import('@/views/pages/NotFound.vue')
-        },
+        }
     ]
 });
 

@@ -6,26 +6,26 @@ import AppMenuItem from './AppMenuItem.vue';
 const proModel = [
     {
         label: 'Home',
-        items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' }]
+        items: [{ label: 'Dashboard demo', icon: 'pi pi-fw pi-home', to: '/' }]
     },
-    {
-        label: 'Product',
-        items: [
-            { label: 'Product List', icon: 'pi pi-fw pi-id-card', to: '/uikit/formlayout' },
-        ]
-    },
-    {
-        label: 'Report',
-        items: [
-            { label: 'Product List', icon: 'pi pi-fw pi-id-card', to: '/uikit/formlayout' },
-        ]
-    },
-    {
-        label: 'Inventory',
-        items: [
-            { label: 'Product List', icon: 'pi pi-fw pi-id-card', to: '/uikit/formlayout' },
-        ]
-    },
+    // {
+    //     label: 'Product',
+    //     items: [
+    //         { label: 'Product List', icon: 'pi pi-fw pi-id-card', to: '/uikit/formlayout' },
+    //     ]
+    // },
+    // {
+    //     label: 'Report',
+    //     items: [
+    //         { label: 'Product List', icon: 'pi pi-fw pi-id-card', to: '/uikit/formlayout' },
+    //     ]
+    // },
+    // {
+    //     label: 'Inventory',
+    //     items: [
+    //         { label: 'Product List', icon: 'pi pi-fw pi-id-card', to: '/uikit/formlayout' },
+    //     ]
+    // },
     {
         label: 'Demo',
         items: [
