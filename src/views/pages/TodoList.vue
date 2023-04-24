@@ -7,7 +7,7 @@
                 <h5>Todo List</h5>
                 <div class="col-12 md:col-6">
                     <div class="p-inputgroup">
-                        <InputText placeholder="enter job" v-model="inputValue" />
+                        <InputText placeholder="enter job" v-model="inputValue" @keypress.enter="addItem" />
                         <Button @click="addItem" :disabled="!inputValue" icon="pi pi-plus" severity="success" />
                     </div>
 
@@ -20,7 +20,7 @@
                     </div>
 
                     <div v-if="todoList.length" class="flex align-items-center">
-                        <Chip v-if="remaining > 0" :label="remaining + ' item left'" />
+                        <Chip :label="remaining + ' item left'" />
                         <SelectButton class="mx-2" v-model="selectedValue" :options="options" aria-labelledby="basic" />
                         <Button :disabled="todoList.length === remaining" @click="clearAllItemConfirm($event)" severity="danger"> Clear</Button>
                     </div>
@@ -39,11 +39,14 @@ const toast = useToast();
 const getRandomStringId = () => {
     return Date.now() + '';
 };
+
+import { Todo } from '../../type/Todo';
+
 const STORAGE_KEY = 'Todo-List-Test';
-const todoList = reactive(JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []);
-const inputValue = ref('');
+const todoList: Todo[] = reactive(JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []);
+const inputValue = ref('all');
 const selectedValue = ref(null);
-const options = ref(['all', 'complete', 'uncomplete']);
+const options = ['all', 'complete', 'uncomplete'];
 
 // handel
 const addItem = () => {
@@ -108,9 +111,9 @@ const filters = {
     uncomplete: (todos) => todos.filter((todo) => !todo.isDone),
     complete: (todos) => todos.filter((todo) => todo.isDone)
 };
-const remaining = computed(() => filters['uncomplete'](todoList).length);
+const remaining = computed<number>(() => filters['uncomplete'](todoList).length);
 
-const filteredTodos = computed(() => {
+const filteredTodos = computed<Todo[]>(() => {
     // console.log('filters::::', selectedValue.value);
     if (selectedValue.value == null) {
         return filters['all'](todoList);

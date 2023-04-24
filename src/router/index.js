@@ -148,9 +148,19 @@ const router = createRouter({
                     component: () => import('@/views/pages/TodoList.vue')
                 },
                 {
-                    path: '/demo/todolistcomponents',
-                    name: 'todolistcomponents',
+                    path: '/demo/todolist-components',
+                    name: 'todolist-components',
                     component: () => import('@/views/pages/TodoListComponents.vue')
+                },
+                {
+                    path: '/demo/todolist-components-with-piana',
+                    name: 'todolist-components-with-piana',
+                    component: () => import('@/views/pages/TodoListComponentsWithPiana.vue')
+                },
+                {
+                    path: '/demo/todolist-components-with-piana-2',
+                    name: 'todolist-components-with-piana-2',
+                    component: () => import('@/views/pages/TodoListComponentsWithPiana2.vue')
                 },
         
                 // end product

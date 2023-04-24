@@ -6,24 +6,15 @@
             <div className="card">
                 <h5>Todo List</h5>
                 <div class="col-12 md:col-6">
-                    <div class="p-inputgroup">
-                        <InputText placeholder="enter job" v-model="inputValue" />
-                        <Button @click="addItem" :disabled="!inputValue" icon="pi pi-plus" severity="success" />
-                    </div>
+                    <TodoHeader v-model:jobName="inputValue" @addItemEmit="addItem" ></TodoHeader>
 
                     <div class="flex flex-column my-2">
                         <div v-for="item of filteredTodos" :key="item.id" class="flex align-items-center">
-                            <Checkbox v-model="item.isDone" :inputId="item.id" :binary="true" />
-                            <label class="mx-2" :for="item.id" :class="[item.isDone && 'line-through']">{{ item.name }}</label>
-                            <Button :disabled="!item.isDone" @click="removeItemConfirm($event, item.id)" icon="pi pi-times" severity="danger" text rounded aria-label="Cancel" />
+                            <TodoItem :item="item" :removeItemConfirm="removeItemConfirm"></TodoItem>
                         </div>
                     </div>
 
-                    <div v-if="todoList.length" class="flex align-items-center">
-                        <Chip v-if="remaining > 0" :label="remaining + ' item left'" />
-                        <SelectButton class="mx-2" v-model="selectedValue" :options="options" aria-labelledby="basic" />
-                        <Button :disabled="todoList.length === remaining" @click="clearAllItemConfirm($event)" severity="danger"> Clear</Button>
-                    </div>
+                    <TodoFooter :todoList="todoList" :remaining="remaining" :clearAllItemConfirm="clearAllItemConfirm" v-model:selectedValue="selectedValue"></TodoFooter>
                 </div>
             </div>
         </div>
@@ -39,11 +30,16 @@ const toast = useToast();
 const getRandomStringId = () => {
     return Date.now() + '';
 };
+
+import TodoHeader from '@/components/TodoHeader.vue'
+import TodoFooter from '@/components/TodoFooter.vue'
+import TodoItem from '@/components/TodoItem.vue'
+import { Todo } from '../../type/Todo';
+
 const STORAGE_KEY = 'Todo-List-Test-Components';
-const todoList = reactive(JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []);
+const todoList: Todo[] = reactive(JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []);
 const inputValue = ref('');
-const selectedValue = ref(null);
-const options = ref(['all', 'complete', 'uncomplete']);
+const selectedValue = ref('all');
 
 // handel
 const addItem = () => {
@@ -108,9 +104,9 @@ const filters = {
     uncomplete: (todos) => todos.filter((todo) => !todo.isDone),
     complete: (todos) => todos.filter((todo) => todo.isDone)
 };
-const remaining = computed(() => filters['uncomplete'](todoList).length);
+const remaining = computed<number>(() => filters['uncomplete'](todoList).length);
 
-const filteredTodos = computed(() => {
+const filteredTodos = computed<Todo[]>(() => {
     // console.log('filters::::', selectedValue.value);
     if (selectedValue.value == null) {
         return filters['all'](todoList);
