@@ -1,6 +1,4 @@
 <template>
-    <Toast />
-    <ConfirmPopup></ConfirmPopup>
     <div className="grid">
         <div className="col-12">
             <div className="card">

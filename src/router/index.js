@@ -170,7 +170,22 @@ const router = createRouter({
                     path: '/demo/todolist-components-with-piana-2',
                     name: 'todolist-components-with-piana-2',
                     component: () => import('@/views/pages/TodoListComponentsWithPiana2.vue')
-                }
+                },
+                {
+                    path: '/demo/call-api-demo',
+                    name: 'call-api-demo',
+                    component: () => import('@/views/pages/CallApiTest.vue')
+                },
+                {
+                    path: '/demo/call-api-reuse',
+                    name: 'call-api-reuse',
+                    component: () => import('@/views/pages/CallApiReuse.vue')
+                },
+                {
+                    path: '/demo/call-api-reuse-posts',
+                    name: 'call-api-reuse-posts',
+                    component: () => import('@/views/pages/CallApiReusePosts.vue')
+                },
             ]
             // end product]
         },

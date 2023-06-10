@@ -1,6 +1,13 @@
+<script setup lang="ts">
+import TodoHeader2 from '@/components/TodoHeader2.vue';
+import TodoFooter2 from '@/components/TodoFooter2.vue';
+import TodoItem2 from '@/components/TodoItem2.vue';
+
+import { useTodoStore } from '@/stores/todo';
+const todoStore = useTodoStore();
+</script>
+
 <template>
-    <Toast />
-    <ConfirmPopup></ConfirmPopup>
     <div className="grid">
         <div className="col-12">
             <div className="card">
@@ -20,14 +27,5 @@
         </div>
     </div>
 </template>
-
-<script setup lang="ts">
-import TodoHeader2 from '@/components/TodoHeader2.vue'
-import TodoFooter2 from '@/components/TodoFooter2.vue'
-import TodoItem2 from '@/components/TodoItem2.vue'
-
-import { useTodoStore } from '@/stores/todo';
-const todoStore = useTodoStore();
-</script>
 
 <style lang="scss" scoped></style>

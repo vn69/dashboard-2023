@@ -33,6 +33,9 @@ const proModel = [
             { label: 'Todo List Components', icon: 'pi pi-fw pi-id-card', to: '/demo/todolist-components' },
             { label: 'Todo List Cpn with Piana 1', icon: 'pi pi-fw pi-id-card', to: '/demo/todolist-components-with-piana' },
             { label: 'Todo List Cpn with Piana 2', icon: 'pi pi-fw pi-id-card', to: '/demo/todolist-components-with-piana-2' },
+            { label: 'Call Api', icon: 'pi pi-fw pi-id-card', to: '/demo/call-api-demo' },
+            { label: 'Call Api Reuse Products', icon: 'pi pi-fw pi-id-card', to: '/demo/call-api-reuse' },
+            { label: 'Call Api Reuse Posts', icon: 'pi pi-fw pi-id-card', to: '/demo/call-api-reuse-posts' },
         ]
     },
 ];

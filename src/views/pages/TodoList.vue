@@ -1,6 +1,4 @@
 <template>
-    <Toast />
-    <ConfirmPopup></ConfirmPopup>
     <div className="grid">
         <div className="col-12">
             <div className="card">
@@ -44,7 +42,7 @@ import { Todo } from '../../type/Todo';
 
 const STORAGE_KEY = 'Todo-List-Test';
 const todoList: Todo[] = reactive(JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? []);
-const inputValue = ref('all');
+const inputValue = ref('');
 const selectedValue = ref(null);
 const options = ['all', 'complete', 'uncomplete'];
 
