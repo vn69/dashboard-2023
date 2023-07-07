@@ -187,8 +187,14 @@ const router = createRouter({
                     component: () => import('@/views/pages/CallApiReusePosts.vue')
                 },
             ]
-            // end product]
         },
+
+        {
+            path: '/loto',
+            name: 'loto',
+            component: () => import('@/views/pages/loto/index.vue')
+        },
+        // end product]
         {
             path: '/landing',
             name: 'landing',
